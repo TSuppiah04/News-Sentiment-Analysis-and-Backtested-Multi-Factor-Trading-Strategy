@@ -39,3 +39,12 @@ def fetch_news(symbol, category=str, from_date=str, to_date=str) -> pd.DataFrame
 
     return df[["datetime", "headline", "summary"]].sort_values("datetime").reset_index(drop=True)
 
+if __name__ == "__main__":
+
+    import datetime
+    end = datetime.date.today()
+    start = end - datetime.timedelta(days=7)
+
+    print(f"Fetching news for SPY from {start} to {end}")
+    news_df = fetch_news("SPY", start.isoformat(), end.isoformat())
+    print(news_df.head())
