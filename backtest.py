@@ -58,3 +58,20 @@ def backtest_performance(daily_pnls: pd.Series) -> dict:
     annual_return = (1 + cumulative_return) ** (252 / len(daily_pnls)) - 1
     annual_volatility = daily_pnls.std() * np.sqrt(252)
     sharpe_ratio = annual_return / annual_volatility if annual_volatility != 0 else np.nan
+
+    return {
+        "cumulative_return": cumulative_return.iloc[-1],
+        "annual_return": annual_return,
+        "annual_volatility": annual_volatility,
+        "sharpe_ratio": sharpe_ratio
+
+    }
+
+def plot_equity(prices: pd.Series, strategy_results: pd.Series, title: str = "Strategy vs Benchmark"):
+    strategy_cum = (1 + strategy_results).cumprod()
+    benchmark_results = prices.pct_change().fillna(0)
+    benchmark_cum = (1 + benchmark_results).cumprod()
+
+    plt.figure(figsize=(14, 7))
+    plt.plot(strategy_cum_index, strategy_cum.values, label = "Strategy")
+    plt.plot(benchmark_cum.index, benchmark_cum.values, label = "Benchmark", alpha=0.7)
