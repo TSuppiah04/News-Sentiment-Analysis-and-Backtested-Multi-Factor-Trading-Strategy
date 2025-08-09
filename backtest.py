@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import quantstats as qs
 
 def backtest_strategy(prices: pd.Series, signals: pd.Series, entry: float = 0.25, exit: float = 0.15, stoploss: float = None) -> pd.DataFrame:
 
