@@ -38,8 +38,19 @@ def finbert_scorer(text):
 def get_sentiment_score(data, use_finbert=False, text_column="headline"):
     data = data.copy()
     scores = []
+    positive_words = ["gain", "rise", "up", "positive", "profit", "strong", "growth", "surge"]
+    negative_words = ["loss", "fall", "down", "negative", "decline", "weak", "drop", "plunge"]
+
     if not use_finbert or not finbert_init():
         print("Finbert not available, using default scoring.")
+        for t in data[text_column].fillna("").astype(str).tolist():
+            t_lower = t.lower()
+            score = 0
+            if any(word in t_lower for word in positive_words):
+                score += 1
+            if any(word in t_lower for word in negative_words):
+                score -= 1
+            scores.append(score)     
     else: 
         for t in data[text_column].fillna("").astype(str).tolist():
             try:

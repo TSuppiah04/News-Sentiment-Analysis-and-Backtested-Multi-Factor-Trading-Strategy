@@ -1,10 +1,11 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
-def backtest_strategy(prices: pd.Series, signals: pd.Series, entry: float = 0.25, exit: float = 0.0, stoploss: float = None) -> pd.DataFrame:
+def backtest_strategy(prices: pd.Series, signals: pd.Series, entry: float = 0.25, exit: float = 0.15, stoploss: float = None) -> pd.DataFrame:
 
     prices = prices.copy()
-    signals = signals.copy()
+    signals = -signals.shift(1).fillna(0)
 
     inpos = 0
     entry_price = None
@@ -12,9 +13,10 @@ def backtest_strategy(prices: pd.Series, signals: pd.Series, entry: float = 0.25
     positions = []
     entry_prices = []
 
-    for i in enumerate(prices):
+    for i in range(len(prices)):
         price = prices.iloc[i]
         signal = signals.iloc[i]
+        prev_pos = inpos
 
         if inpos == 0: 
             if signal > entry:
@@ -29,14 +31,21 @@ def backtest_strategy(prices: pd.Series, signals: pd.Series, entry: float = 0.25
             if signal < exit:
                 inpos = 0
                 entry_price = None
-            elif stoploss is not None and (price - entry_price) / entry_price < -stoploss:
+            elif stoploss is not None and entry_price is not None and (price - entry_price) / entry_price < -stoploss:
                 inpos = 0
                 entry_price = None
 
-        
+        elif inpos == -1:
+            if signal > -exit:
+                inpos = 0
+                entry_price = None
+            elif stoploss is not None and entry_price is not None and (entry_price - price) / entry_price < -stoploss:
+                inpos = 0
+                entry_price = None
+
         if i > 0:
             daily_return = (price - prices.iloc[i-1]) / prices.iloc[i-1]
-            daily_pnl = inpos * daily_return
+            daily_pnl = prev_pos * daily_return
         else:
             daily_pnl = 0
 
@@ -73,5 +82,5 @@ def plot_equity(prices: pd.Series, strategy_results: pd.Series, title: str = "St
     benchmark_cum = (1 + benchmark_results).cumprod()
 
     plt.figure(figsize=(14, 7))
-    plt.plot(strategy_cum_index, strategy_cum.values, label = "Strategy")
-    plt.plot(benchmark_cum.index, benchmark_cum.values, label = "Benchmark", alpha=0.7)
+    plt.plot(strategy_cum.index, strategy_cum.values, label = "Strategy", color='blue', alpha=0.7)
+    plt.plot(benchmark_cum.index, benchmark_cum.values, label = "Benchmark", color='orange', alpha=0.7)
