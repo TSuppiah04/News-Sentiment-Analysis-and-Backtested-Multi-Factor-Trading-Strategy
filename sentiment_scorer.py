@@ -35,5 +35,18 @@ def finbert_scorer(text):
     scores = softmax(outputs.logits.detach().cpu().numpy()[0])
     return float(scores[2] - scores[0]) 
     
-finbert_init()
-finbert_scorer("This is a test sentence for Finbert scoring.")
+def get_sentiment_score(data, use_finbert=False, text_column="headline"):
+    data = data.copy()
+    scores = []
+    if not use_finbert or not finbert_init():
+        print("Finbert not available, using default scoring.")
+    else: 
+        for t in data[text_column].fillna("").astype(str).tolist():
+            try:
+                scores.append(finbert_scorer(t))
+            except Exception:
+                raise RuntimeError(f"Error scoring text: {t}")
+    data["sentiment_score"] = scores
+    return data
+
+
