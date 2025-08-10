@@ -22,13 +22,13 @@ pip install -r requirements.txt
 ```
 
 ## Usage:
-1. 
+1. Clone the repository
 ```bash
-# Clone the repository 
 git clone https://github.com/TSuppiah04/News-Sentiment-Analysis-and-Backtested-Multi-Factor-Trading-Strategy.git
 ```
 2. Adapt the 'TICKER', 'START_DATE', 'END_DATE' to what suits the user. 
-3. Run main.py and change weights for combined signal alongside 'ENTRY_THRESHOLD', 'EXIT_THRESHOLD'.
+3. Change weights for combined signal alongside 'ENTRY_THRESHOLD', 'EXIT_THRESHOLD'.
+4. Run main.py.
 
 ## Results for SPY, AAPL AND TSLA:
 
