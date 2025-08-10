@@ -20,7 +20,7 @@ Using price data downloaded from Yahoo Finance, alongside fetching financial new
 ```bash
 pip install -r requirements.txt
 ```
-
+4. Initialize finbert using finbert_init()
 ## Usage:
 1. Clone the repository
 ```bash
