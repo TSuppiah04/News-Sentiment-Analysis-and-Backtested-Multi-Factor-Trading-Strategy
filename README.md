@@ -1,2 +1,26 @@
 # News-Sentiment-Analysis-and-Backtested-Multi-Factor-Trading-Strategy
-Backtested trading model that combines momentum, volality and mean reversion based strategies with real time news sentiment analysis from the NLP model FinnBERT. 
+
+# Overview:
+
+This project executes a trading strategy combining 4 signals:
+
+1. Momentum - Captures long-term strong/weak performance over a rolling window.
+2. Mean Reversion - Trades against short-term deviations from rolling mean.
+3. Volatility - Makes trades based off changes in rolling volatility. 
+4. News Sentiment - Uses the NLP model finBERT to score news headlines. 
+
+Using price data downloaded from Yahoo Finance, alongside fetching financial news from Finnhub, trading signals were generated and combined. Performance was then tested using backtesting. 
+
+# Requirements:
+
+1. Get free finnhub API key from https://finnhub.io/
+2. Setup .env file and insert FINNHUB_API = (Your API key here)
+3. Open terminal and input 'pip install -r requirements.txt
+
+# Usage:
+
+1. Adapt the 'TICKER', 'START_DATE', 'END_DATE' to what suits the user. 
+2. Run main.py and change weights for combine signal alongside 'ENTRY_THRESHOLD', 'EXIT_THRESHOLD'.
+
+# Results for SPY, AAPL AND TSLA 
+

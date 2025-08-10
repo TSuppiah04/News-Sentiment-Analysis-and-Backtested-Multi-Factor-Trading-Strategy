@@ -1,5 +1,4 @@
 import os
-import datetime
 import numpy as np
 import pandas as pd
 import yfinance as yf
@@ -15,7 +14,7 @@ from full_report import quantstats_performance
 
 load_dotenv()
 FINNHUB_API = os.getenv("FINNHUB_API")
-TICKER = "FCN"
+TICKER = "SPY"
 START_DATE = "2025-04-06"
 END_DATE = "2025-06-29"
 ENTRY_THRESHOLD = 0.3
@@ -50,8 +49,8 @@ print("Backtest Performance:", performance)
 
 print("="*50)
 plot_equity(prices, backtest_results["daily_pnls"], title=f"{TICKER} Strategy vs Benchmark")
-plt.show()
-plt.close()
+plt.savefig(f"{TICKER} Strategy vs Benchmark")
+
 
 try:
     result = quantstats_performance(backtest_results, prices)
@@ -64,7 +63,6 @@ except Exception as e:
 test_params = [
     (0.4, 0.2),   # Conservative
     (0.3, 0.15),  # Moderate
-    (0.2, 0.1),   # Current-ish
     (0.15, 0.05), # Aggressive
 ]
 
