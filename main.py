@@ -6,11 +6,11 @@ import matplotlib.pyplot as plt
 import quantstats as qs
 from dotenv import load_dotenv
 
-from finnhub_news import fetch_news
-from sentiment_scorer import finbert_init, finbert_scorer, get_sentiment_score
-from backtest import backtest_strategy, backtest_performance, plot_equity
-from trading_signals import momentum_signal, volatility_signal, reversion_signal, combined_signal
-from full_report import quantstats_performance
+from core.finnhub_news import fetch_news
+from core.sentiment_scorer import finbert_init, finbert_scorer, get_sentiment_score
+from core.backtest import backtest_strategy, backtest_performance, plot_equity
+from core.trading_signals import momentum_signal, volatility_signal, reversion_signal, combined_signal
+from core.full_report import quantstats_performance
 
 load_dotenv()
 FINNHUB_API = os.getenv("FINNHUB_API")

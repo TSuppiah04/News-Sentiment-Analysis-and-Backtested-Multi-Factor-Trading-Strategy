@@ -1,4 +1,5 @@
 import torch
+
 USE_FINBERT = True
 try:
     from transformers import AutoTokenizer, AutoModelForSequenceClassification

@@ -1,4 +1,4 @@
-import sentiment_scorer
+import core.sentiment_scorer as sentiment_scorer
 
 sentiment_scorer.finbert_init()
 bad_results = sentiment_scorer.finbert_scorer("Growth, Crash, Failure, Profit, Loss, Decrease")

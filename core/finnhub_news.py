@@ -13,19 +13,10 @@ Usage:
 """
 
 load_dotenv()
-FINNHUB_API = os.getenv("FINNHUB_API")
 
 def fetch_news(symbol, from_date=str, to_date=str) -> pd.DataFrame:
-    """
-    symbol: str
-    Stock symbol (e.g. AAPL, NVDA) 
-    
-    from_date: str
-    Start date in ISO format (YYYY-MM-DD)
+    FINNHUB_API = os.getenv("FINNHUB_API")
 
-    end_date: str
-    End date in ISO format (YYYY-MM-DD)
-    """
     if not FINNHUB_API:
         raise ValueError("FINNHUB_API key is not set. Please set it in your .env file.")
     url = (
