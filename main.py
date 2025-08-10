@@ -14,7 +14,7 @@ from full_report import quantstats_performance
 
 load_dotenv()
 FINNHUB_API = os.getenv("FINNHUB_API")
-TICKER = "MSFT"
+TICKER = "SPY"
 START_DATE = "2025-02-05"
 END_DATE = "2025-08-05"
 ENTRY_THRESHOLD = 0.3
@@ -49,7 +49,7 @@ print("Backtest Performance:", performance)
 
 print("="*50)
 plot_equity(prices, backtest_results["daily_pnls"], title=f"{TICKER} Strategy vs Benchmark")
-plt.savefig(f"{TICKER} Strategy vs Benchmark")
+plt.savefig(f"images/equity_curve_{TICKER}.png", dpi=300, bbox_inches='tight')
 
 
 try:

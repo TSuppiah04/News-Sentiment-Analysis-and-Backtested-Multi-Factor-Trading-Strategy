@@ -24,7 +24,7 @@ Using price data downloaded from Yahoo Finance, alongside fetching financial new
 
 # Results for SPY, AAPL AND TSLA:
 
-Stock Comparison
+Stock Comparison:
 
 | Ticker        | CAGR           | Sharpe  | Avg Drawdown | 
 | ------------- |:--------------:|:-------:|:------------:|
@@ -32,3 +32,4 @@ Stock Comparison
 | AAPL          | 13.17%         |   0.77  | -9.36%       |
 | MSFT          | -22.77%        |    -2.6 | -11.13%      |
 
+Strategies vs Benchmark: 
