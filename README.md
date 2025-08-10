@@ -20,7 +20,7 @@ Using price data downloaded from Yahoo Finance, alongside fetching financial new
 # Usage:
 
 1. Adapt the 'TICKER', 'START_DATE', 'END_DATE' to what suits the user. 
-2. Run main.py and change weights for combine signal alongside 'ENTRY_THRESHOLD', 'EXIT_THRESHOLD'.
+2. Run main.py and change weights for combined signal alongside 'ENTRY_THRESHOLD', 'EXIT_THRESHOLD'.
 
 # Results for SPY, AAPL AND TSLA:
 

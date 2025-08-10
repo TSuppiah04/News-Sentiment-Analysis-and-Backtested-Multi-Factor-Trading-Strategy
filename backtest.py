@@ -82,10 +82,11 @@ def plot_equity(prices: pd.Series, strategy_results: pd.Series, title: str = "St
     strategy_cum = (1 + strategy_results).cumprod()
     benchmark_results = prices.pct_change().fillna(0)
     benchmark_cum = (1 + benchmark_results).cumprod()
-
+    
     plt.figure(figsize=(14, 7))
     plt.plot(strategy_cum.index, strategy_cum.values, label = "Strategy", color='blue', alpha=0.7)
     plt.plot(benchmark_cum.index, benchmark_cum.values, label = "Benchmark", color='orange', alpha=0.7)
+    plt.savefig(f"images/equity_curve_{title}.png", dpi=300, bbox_inches='tight')
     plt.legend()
     plt.show()
     plt.title(title)
