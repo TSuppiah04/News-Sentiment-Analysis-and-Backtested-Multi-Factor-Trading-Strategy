@@ -30,7 +30,7 @@ git clone https://github.com/TSuppiah04/News-Sentiment-Analysis-and-Backtested-M
 3. Change weights for combined signal alongside 'ENTRY_THRESHOLD', 'EXIT_THRESHOLD'.
 4. Run main.py.
 
-## Results for SPY, AAPL AND TSLA:
+## Results for SPY, AAPL AND MSFT:
 
 ### Stock Comparison:
 
