@@ -22,5 +22,13 @@ Using price data downloaded from Yahoo Finance, alongside fetching financial new
 1. Adapt the 'TICKER', 'START_DATE', 'END_DATE' to what suits the user. 
 2. Run main.py and change weights for combine signal alongside 'ENTRY_THRESHOLD', 'EXIT_THRESHOLD'.
 
-# Results for SPY, AAPL AND TSLA 
+# Results for SPY, AAPL AND TSLA:
+
+Stock Comparison
+
+| Ticker        | CAGR           | Sharpe  | Avg Drawdown | 
+| ------------- |:--------------:|:-------:|:------------:|
+| SPY           | -16.18%        | -1.93   | -3.72%       | 
+| AAPL          | 13.17%         |   0.77  | -9.36%       |
+| MSFT          | -22.77%        |    -2.6 | -11.13%      |
 
