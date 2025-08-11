@@ -16,7 +16,7 @@ from core.threshold_testing import threshold_testing
 
 load_dotenv()
 FINNHUB_API = os.getenv("FINNHUB_API")
-TICKER = "SPY"
+TICKER = "MSFT"
 START_DATE = "2024-01-05"
 END_DATE = "2025-04-05"
 ENTRY_THRESHOLD = 0.3
