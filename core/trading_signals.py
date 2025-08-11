@@ -34,8 +34,8 @@ def reversion_signal(prices, window = 10, z_value = 1.0):
 
 def combined_signal(sentiment_series, momentum_series, volatility_series, reversion_series):
 
-    idx = sentiment_series.index.union(momentum_series.index).union(volatility_series).union(reversion_series.index)
-    s = sentiment_series.reindex(idx).fillna(method='ffill').fillna(0)
+    idx = sentiment_series.index.union(momentum_series.index).union(volatility_series.index).union(reversion_series.index)
+    s = sentiment_series.reindex(idx).ffill().fillna(0)
     m = momentum_series.reindex(idx).fillna(0)
     v = volatility_series.reindex(idx).fillna(0)
     r = reversion_series.reindex(idx).fillna(0)

@@ -12,10 +12,11 @@ from core.backtest import backtest_strategy, backtest_performance, plot_equity
 from core.trading_signals import momentum_signal, volatility_signal, reversion_signal, combined_signal
 from core.full_report import quantstats_performance
 from core.walk_forward import walk_forward
+from core.threshold_testing import threshold_testing
 
 load_dotenv()
 FINNHUB_API = os.getenv("FINNHUB_API")
-TICKER = "MSFT"
+TICKER = "SPY"
 START_DATE = "2024-01-05"
 END_DATE = "2025-04-05"
 ENTRY_THRESHOLD = 0.3
@@ -44,17 +45,13 @@ reversion_series = reversion_signal(prices, window=10, z_value=1.0)
 combined_series = combined_signal(daily_sentiment, momentum_series, volatility_series, reversion_series)
 
 backtest_results = backtest_strategy(prices, combined_series, entry=ENTRY_THRESHOLD, exit=EXIT_THRESHOLD, stoploss=0.1)
+performance = backtest_performance(backtest_results["daily_pnls"])
 
 walk_forward_results = walk_forward(prices, combined_series, window=60, step=20, entry=[0.2, 0.3, 0.4], exit=[0.1, 0.2], stoploss=0.1)
-walk_forward_performance = backtest_performance(walk_forward_results)
+walk_forward_performance = backtest_performance(walk_forward_results["daily_pnls"])
 
-performance = backtest_performance(backtest_results["daily_pnls"])
-print("Backtest Performance:", performance)
-
-print("="*50)
 plot_equity(prices, backtest_results["daily_pnls"], title=f"{TICKER} Strategy vs Benchmark")
-plot_equity(prices.loc[walk_forward_results.index], walk_forward_results, title=f"{TICKER} Walk-Forward Strategy vs Benchmark")
-
+plot_equity(prices.loc[walk_forward_results["daily_pnls"].index], walk_forward_results["daily_pnls"], title=f"{TICKER} Walk-Forward Strategy vs Benchmark")
 try:
     result = quantstats_performance(backtest_results, prices)
     print(f"Function returned: {result}")
@@ -63,18 +60,11 @@ except Exception as e:
     import traceback
     traceback.print_exc()
 
-test_params = [
-    (0.4, 0.2),   # Conservative
-    (0.3, 0.15),  # Moderate
-    (0.15, 0.05), # Aggressive
-]
-
-print("Threshold Testing Results:")
-print("-" * 50)
-for entry, exit in test_params:
-    test_results = backtest_strategy(prices, combined_series, entry=entry, exit=exit, stoploss=0.1)
-    total_return = (1 + test_results['daily_pnls']).prod() - 1
-    sharpe = test_results['daily_pnls'].mean() / test_results['daily_pnls'].std() * np.sqrt(252)
-    positions = test_results['positions']
-    trading_days = (positions != 0).sum()
-    print(f"Entry: {entry:4.2f}, Exit: {exit:4.2f} | Return: {total_return:6.1%} | Sharpe: {sharpe:5.2f} | Trading: {trading_days:2d} days")
+try:
+    result = quantstats_performance(walk_forward_results, prices.loc[walk_forward_results['daily_pnls'].index])
+    print(f"Function returned: {result}")
+except Exception as e:
+    print(f"ERROR in quantstats_performance: {e}")
+    import traceback
+    traceback.print_exc()
+threshold_testing(prices, combined_series)
