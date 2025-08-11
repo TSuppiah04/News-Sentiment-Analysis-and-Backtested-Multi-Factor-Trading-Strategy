@@ -38,10 +38,8 @@ git clone https://github.com/TSuppiah04/News-Sentiment-Analysis-and-Backtested-M
 |:------------------:|:--------------:|:-------:|:------------:|
 | SPY (Single)       | -3.64%         | -0.56   | -8.76%       | 
 | SPY (Walk Forward) | -3.78%         | -0.62   | -6.96%       |   
-|:------------------:|:--------------:|:-------:|:------------:|
 | AAPL (Single)      | -1.82%         | -0.1%   | -10.32%      |
 | AAPL (Walk Forward)|  1.08%         |  0.18   | -12.75%      |
-|:------------------:|:--------------:|:-------:|:------------:|
 | MSFT (Single)      |  4.44%         | 0.47    | -7.57%       |
 | MSFT (Walk Forward)|  7.77%         | 0.58    | -10.86%      |
 ### Strategies vs Benchmark: 
