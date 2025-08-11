@@ -9,7 +9,7 @@ This project executes a trading strategy combining 4 signals:
 3. Volatility - Makes trades based off changes in rolling volatility. 
 4. News Sentiment - Uses the NLP model finBERT to score news headlines. 
 
-Using price data downloaded from Yahoo Finance, alongside fetching financial news from Finnhub, these 4 trading signals were generated and combined. Performance is then tested using backtesting and reports are generated using quantstats. 
+Using price data downloaded from Yahoo Finance, alongside fetching financial news from Finnhub, these 4 trading signals were generated and combined. Performance is then tested using backtesting and walk-forward analysis. Reports are then generated using quantstats. 
 
 ## Requirements:
 
