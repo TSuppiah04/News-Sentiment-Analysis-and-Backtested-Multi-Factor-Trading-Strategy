@@ -11,11 +11,12 @@ from core.sentiment_scorer import finbert_init, finbert_scorer, get_sentiment_sc
 from core.backtest import backtest_strategy, backtest_performance, plot_equity
 from core.trading_signals import momentum_signal, volatility_signal, reversion_signal, combined_signal
 from core.full_report import quantstats_performance
+from core.walk_forward import walk_forward
 
 load_dotenv()
 FINNHUB_API = os.getenv("FINNHUB_API")
 TICKER = "MSFT"
-START_DATE = "2025-01-05"
+START_DATE = "2024-01-05"
 END_DATE = "2025-04-05"
 ENTRY_THRESHOLD = 0.3
 EXIT_THRESHOLD = 0.15
@@ -44,11 +45,15 @@ combined_series = combined_signal(daily_sentiment, momentum_series, volatility_s
 
 backtest_results = backtest_strategy(prices, combined_series, entry=ENTRY_THRESHOLD, exit=EXIT_THRESHOLD, stoploss=0.1)
 
+walk_forward_results = walk_forward(prices, combined_series, window=60, step=20, entry=[0.2, 0.3, 0.4], exit=[0.1, 0.2], stoploss=0.1)
+walk_forward_performance = backtest_performance(walk_forward_results)
+
 performance = backtest_performance(backtest_results["daily_pnls"])
 print("Backtest Performance:", performance)
 
 print("="*50)
 plot_equity(prices, backtest_results["daily_pnls"], title=f"{TICKER} Strategy vs Benchmark")
+plot_equity(prices.loc[walk_forward_results.index], walk_forward_results, title=f"{TICKER} Walk-Forward Strategy vs Benchmark")
 
 try:
     result = quantstats_performance(backtest_results, prices)

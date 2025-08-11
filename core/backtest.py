@@ -64,14 +64,14 @@ def backtest_strategy(prices: pd.Series, signals: pd.Series, entry: float = 0.25
 
 def backtest_performance(daily_pnls: pd.Series) -> dict:
     daily_pnls = pd.Series(daily_pnls).fillna(0)
-    cumulative_return = (1 + daily_pnls).cumprod()
-    total_return = cumulative_return.iloc[-1]
+    cumulative_return = (1 + daily_pnls).prod()
+    total_return = cumulative_return - 1
     annual_return = (1 + total_return) ** (252 / len(daily_pnls)) - 1
     annual_volatility = daily_pnls.std() * np.sqrt(252)
     sharpe_ratio = annual_return / annual_volatility if annual_volatility != 0 else np.nan
 
     return {
-        "cumulative_return": cumulative_return.iloc[-1],
+        "cumulative_return": cumulative_return,
         "annual_return": annual_return,
         "annual_volatility": annual_volatility,
         "sharpe_ratio": sharpe_ratio
