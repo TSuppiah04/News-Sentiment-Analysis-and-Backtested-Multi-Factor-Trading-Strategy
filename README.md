@@ -47,10 +47,10 @@ git clone https://github.com/TSuppiah04/News-Sentiment-Analysis-and-Backtested-M
 #### Single vs Walk-Forward Equity Curve for SPY:
 ![Equity Curve](https://github.com/TSuppiah04/News-Sentiment-Analysis-and-Backtested-Multi-Factor-Trading-Strategy/blob/main/images/equity_curve_SPY%20Strategy%20vs%20Benchmark.png)
 ![Equity Curve](https://github.com/TSuppiah04/News-Sentiment-Analysis-and-Backtested-Multi-Factor-Trading-Strategy/blob/main/images/equity_curve_SPY%20Walk-Forward%20Strategy%20vs%20Benchmark.png)
+#### Single vs Walk-Forward Equity Curve for MSFT:
+![Equity Curve](https://github.com/TSuppiah04/News-Sentiment-Analysis-and-Backtested-Multi-Factor-Trading-Strategy/blob/main/images/equity_curve_MSFT%20Strategy%20vs%20Benchmark.png)
+![Equity Curve](https://github.com/TSuppiah04/News-Sentiment-Analysis-and-Backtested-Multi-Factor-Trading-Strategy/blob/main/images/equity_curve_MSFT%20Walk-Forward%20Strategy%20vs%20Benchmark.png)
 #### Single vs Walk-Forward Equity Curve for AAPL:
 ![Equity Curve](https://github.com/TSuppiah04/News-Sentiment-Analysis-and-Backtested-Multi-Factor-Trading-Strategy/blob/main/images/equity_curve_AAPL%20Strategy%20vs%20Benchmark.png)
 ![Equity Curve](https://github.com/TSuppiah04/News-Sentiment-Analysis-and-Backtested-Multi-Factor-Trading-Strategy/blob/main/images/equity_curve_AAPL%20Walk-Forward%20Strategy%20vs%20Benchmark.png)
 
-#### Single vs Walk-Forward Equity Curve for MSFT:
-![Equity Curve](https://github.com/TSuppiah04/News-Sentiment-Analysis-and-Backtested-Multi-Factor-Trading-Strategy/blob/main/images/equity_curve_MSFT%20Strategy%20vs%20Benchmark.png)
-![Equity Curve](https://github.com/TSuppiah04/News-Sentiment-Analysis-and-Backtested-Multi-Factor-Trading-Strategy/blob/main/images/equity_curve_MSFT%20Walk-Forward%20Strategy%20vs%20Benchmark.png)
