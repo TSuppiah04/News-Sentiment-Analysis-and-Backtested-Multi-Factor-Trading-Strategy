@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from core.backtest import backtest_strategy, backtest_performance, plot_equity
 
-def walk_forward(prices, signals, window = 60, step = 20, entry=[0.2,0.3,0.4], exit=[0.1, 0.2], stoploss=0.1):
+def walk_forward(prices, signals, window = 60, step = 20, entry=[0.2,0.3,0.4,0.5], exit=[0.1, 0.2,0.3], stoploss=0.1):
     results = []
     for start in range(0, len(prices) - window, step):
         train = slice(start, start + window)

@@ -7,3 +7,6 @@ nltk
 requests
 quantstats
 torch
+dotenv 
+ipython 
+transformers

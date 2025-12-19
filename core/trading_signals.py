@@ -20,7 +20,7 @@ def volatility_signal(prices, window = 10):
     prices = ensure_series(prices)
     vol = prices.pct_change().rolling(window).std()
     vol_mean = vol.rolling(window).mean()
-    sig = np.where(vol > vol_mean, 1, -1) 
+    sig = np.where(vol < vol_mean, 1, 0) 
     return pd.Series(sig, index=prices.index).fillna(0)
 
 def reversion_signal(prices, window = 10, z_value = 1.0):

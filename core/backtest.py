@@ -6,7 +6,7 @@ import quantstats as qs
 def backtest_strategy(prices: pd.Series, signals: pd.Series, entry: float = 0.25, exit: float = 0.15, stoploss: float = None) -> pd.DataFrame:
 
     prices = prices.copy()
-    signals = -signals.shift(1).fillna(0)
+    signals = signals.shift(1).fillna(0)
 
     inpos = 0
     entry_price = None

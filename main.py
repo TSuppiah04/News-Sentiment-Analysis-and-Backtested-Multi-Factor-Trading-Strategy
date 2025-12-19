@@ -52,6 +52,7 @@ walk_forward_performance = backtest_performance(walk_forward_results["daily_pnls
 
 plot_equity(prices, backtest_results["daily_pnls"], title=f"{TICKER} Strategy vs Benchmark")
 plot_equity(prices.loc[walk_forward_results["daily_pnls"].index], walk_forward_results["daily_pnls"], title=f"{TICKER} Walk-Forward Strategy vs Benchmark")
+
 try:
     result = quantstats_performance(backtest_results, prices)
     print(f"Function returned: {result}")
